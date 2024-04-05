@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Diseases Detection</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
+    <style>
+
+        /* Existing CSS styles for container, sections, and elements */
+        body {
+            font-family: 'Baloo Bhai 2', cursive;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YWdyaWN1bHR1cmV8ZW58MHx8MHx8fDA%3D');
+            background-image: url('/static/bg.jpg');
+            background-size: cover;
+            /* background-position: center;
+            background-repeat: no-repeat; */
+        }
+
+        .container {
+            max-width: 50%;
+            margin: 70px auto;
+            padding: 20px;
+            background-color: rgba(190, 189, 189, 0.7);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        .title {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title {
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: center;
+            color: #007bff;
+        }
+
+        .image-preview {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Baloo Bhai 2', cursive;
+        }
+
+        button:hover {
+            background-color: #02254a;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .chat {
+            align-self: center;
+        }
+        .logo img {
+            height: 40px; /* Adjust height as needed */
+        }
+        </style>
+</head>
+<body>
+   
+    <div class="navbar">
+        <div class="logo">   
+        <img src="/static/logo.png" alt="Logo">
+        </div>
+        
+        <div class="items">
+        <a class="active" href="/static/home.html">Home</a>
+        <a href="/static/index.html">Model</a>
+        <!-- <a href="about.html">About</a> -->
+        <a href="contact.html">Contact</a>
+    </div>
+    </div>
+    <div class="container">
+    <h1>Crop Diseases Detection</h1>
+    <form id="prediction_form" enctype="multipart/form-data">
+        <label for="image_file">Upload Effected Leaf:</label>
+        <input type="file" id="image_file" name="image_file"><br><br>
+        <label for="crop_name">Crop Name:</label>
+        <select id="crop_name" name="crop_name">    
+            <option value="corn">Corn</option>
+            <option value="tomato">Tomato</option>
+            <option value="potato">Potato</option>
+            <option value="paddy">Paddy</option>
+        </select><br><br>
+        <button type="submit" value="Predict" onclick="submitForm(event)">Predict</button>
+    </form>
+    <div id="prediction_result"></div>
+    <div id="info"></div>
+    <div id="prec"></div>
+    <div id="result"></div>
+    <div class="section chat">
+        <!-- <h2 class="section-title">Dialogflow Chat</h2> -->
+        <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/d928b493-82ab-46aa-8fa1-706bed890b65"></iframe>
+    </div>
+</div>
+    
+<footer>
+    Copyright © GVP_CSE 2024. All rights reserved.
+</footer>
+    <script>
+        async function submitForm(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const file = document.getElementById("image_file").files[0];
+            const cropName = document.getElementById("crop_name").value;
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('image_file', file);
+                formData.append('crop_name', cropName);
+
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                document.getElementById("prediction_result").textContent = "Predicted Disease: " + data.predicted_disease;
+                document.getElementById("info").innerHTML = data.remedies;
+                document.getElementById("prec").innerHTML = data.precaution;
+                document.getElementById("result").innerHTML = data.result;
+            }
+        }
+    </script>
+</body>
+</html>

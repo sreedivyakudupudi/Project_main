@@ -1,0 +1,74 @@
+.navbar {
+    position: fixed; /* Fix navbar position */
+    top: 0; /* Align navbar to top of the page */
+    left: 0;
+    right: 0;
+    background-color: #042451;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    /* justify-content: flex-end; Align items on the right side */
+}
+body{
+    font-family: 'Baloo Bhai 2', cursive;
+}
+.items{
+    align-items: flex-end;
+}
+.logo img {
+    height: 40px; 
+justify-content: left;
+margin-right: 10px;
+margin-left: 10px;
+margin-top: 10px;
+}
+/* .navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px; 
+} */
+
+
+.items {
+    display: flex;
+}
+
+.items a {
+    margin-left: 20px; /* Add margin between items */
+}
+
+/* Optional: Style for active link */
+.items a.active {
+    font-weight: bold;
+    color: #007bff; /* Active link color */
+}
+
+.navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.active {
+    background-color: #666;
+}
+
+footer {
+    background-color: #042451;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

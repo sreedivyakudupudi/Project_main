@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Diseases Detection</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
+    <style>
+        h1{
+            text-align: center;
+        }
+
+        .title {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 50%;
+            margin: 10% auto; /* Adjust the margin to center vertically */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
+            justify-content: center; /* Center vertically */
+            border-radius: 8px;
+        }
+        body {
+        font-family: 'Baloo Bhai 2', cursive;
+        margin: 0;
+        padding: 0;
+        background-image: url('/static/bg.jpg');
+        background-size: cover;
+    
+        }
+
+        button {
+            border-radius: 40px;
+            height: 65px;
+            margin-left: 1200px;
+            width: 180px;
+            /* background-color:  rgba(255, 255, 255, 0.495); */
+            background-color: #85FFBD;
+            background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+            font-size: x-large;
+            font-weight: 700;
+            font-family: 'Baloo Bhai 2', cursive;
+        }
+
+        button:hover{
+            opacity:  0.7;;
+        }
+        
+  
+    </style>
+</head>
+<body>
+  
+    <div class="navbar">
+        <div class="logo">   
+        <img src="/static/logo.png" alt="Logo">
+        </div>
+        
+        <div class="items">
+        <a class="active" href="/static/home.html">Home</a>
+        <a href="/static/index.html">Model</a>
+        <!-- <a href="about.html">About</a> -->
+        <a href="contact.html">Contact</a>
+    </div>
+    </div>
+
+    <div class="container container-relative"> <!-- Add container-relative class to container div -->
+        <!-- <h1>Crop Diseases Detection</h1> -->
+        <div id="home_page">
+            <h1>Welcome to our website!</h1>
+            <p>Our mission is to assist you in accurately detecting crop diseases while providing the essential information you need. Empowering farmers with precise disease identification and comprehensive data for informed decision-making.
+            </p>
+        </div>
+    </div>
+
+    <!-- Button placed outside the container but aligned to the right side -->
+    <a href="/static/index.html" class="button-outside-container"><button>Get Started</button></a>
+    <footer>
+        Copyright © GVP_CSE 2024. All rights reserved.
+    </footer>
+</body>
+</html>
